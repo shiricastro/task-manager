@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+  #root {
+    @apply text-light-text dark:text-dark-text bg-light-background dark:bg-dark-background min-h-screen;
+    --progress-ring-size: 40;
+    --progress-ring-stroke: 4; 
+  }
+  @media (min-width: 1024px) {
+    #root {
+      --progress-ring-size: 50;
+      --progress-ring-stroke: 5; 
+    }
+  }
+}
+
+
+@layer components {
+  .wrapper{
+    @apply px-[12px] py-[8px] rounded-[8px]
+    desktop:px-[20px] desktop:py-[14px] desktop:rounded-[10px]
+  }
+  .main-container{
+    @apply max-w-[1000px] px-[20px] mr-auto ml-auto pb-[50px]
+    desktop:pb-[100px] desktop:px-[40px];
+  }
+  .icon-size {
+    @apply w-[20px]
+  }
+  .button-base {
+    @apply w-full flex items-center justify-center text-button wrapper gap-base
+          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary;
+  }
+  .main-button{
+    @apply button-base text-dark-text bg-primary hover:bg-primary-hover
+  }
+  .secondary-button{
+    @apply button-base text-light-text dark:text-dark-text bg-transparent border border-solid border-primary hover:border-primary-hover
+  }
+  .back-button{
+    @apply text-regular desktop:text-regular-desktop flex items-center gap-base mb-mb-base
+  }
+  .back-button img,
+  .secondary-button img,
+  .main-button img{
+    @apply icon-size;
+  }
+
+  .category-icon {
+    @apply flex items-center justify-center 
+    rounded-[12px] w-[40px] h-[40px]
+    desktop:w-[50px] desktop:h-[50px];
+  }
+  .category-icon--small {
+    @apply rounded-[6px] w-[20px] h-[20px]
+          desktop:w-[30px] desktop:h-[30px];
+  }
+  .category-icon-img {
+    @apply w-[32px] desktop:w-[42px];
+  }
+  .category-icon--small .category-icon-img {
+    @apply w-[16px] desktop:w-[26px];
+  }
+  .comment{
+    @apply text-regular text-gray-400 mb-mb-small text-center;
+  }
+
+  /* header */
+  .header-container {
+    @apply flex items-center justify-between
+    px-[20px] mb-mb-base py-[12px]
+    bg-light-background dark:bg-dark-background
+    desktop:px-[40px] desktop:py-[15px];
+  }
+  .header-logo-container {
+    @apply flex items-center gap-2 
+    desktop:gap-3;
+  }
+  .header-logo-text {
+    @apply text-logo
+    text-light-text dark:text-dark-text
+    desktop:text-logo-desktop;
+  }
+  .header-logo{
+    @apply w-[38.5px]
+    desktop:w-[40px];
+  }
+  .theme-toggle-button {
+    @apply flex items-center justify-center gap-2
+    wrapper shadow-sm
+    bg-primary
+    desktop:gap-3;
+  }
+ 
+
+  /* filter bar  */
+  .filter-bar-container{
+    @apply text-button relative 
+    min-w-[182px] 
+    desktop:text-button-desktop desktop:min-w-[320px];
+  }
+  .filter-bar-button{
+    @apply flex justify-between items-center w-full shadow-card
+    px-[8px] py-[4px] rounded-[8px]
+    bg-light-background dark:bg-dark-lightBackground dark:text-dark-text
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary
+    desktop:px-[12px] desktop:py-[7px] desktop:rounded-[10px];
+    &.main{
+     @apply px-[12px]
+     desktop:px-[20px];
+    }
+  }
+  .filter-bar-button-text{
+    @apply flex items-center
+    py-[4px] rounded-[8px] gap-base
+    desktop:py-[7px] desktop:rounded-[10px] desktop:gap-base-desktop;
+  } 
+  .filter-bar-list-container{
+    @apply absolute left-0 w-full shadow-md 
+    top-[calc(100%+4px)] rounded-[8px] py-[4px] z-10
+    bg-light-background dark:bg-dark-lightBackground dark:text-dark-text
+    desktop:py-[4px] desktop:rounded-[10px];
+  }
+  .filter-bar-list-item{
+    @apply gap-[5px] px-[8px] py-[4px]
+   cursor-pointer
+   desktop:px-[12px] desktop:py-[6px];
+  }
+  .filter-bar-list-item-wrap{
+    @apply flex items-center
+    gap-base px-[8px] py-[4px] rounded-[8px]
+    hover:bg-comment cursor-pointer dark:hover:text-light-text
+    desktop:px-[12px] desktop:py-[7px] desktop:rounded-[10px] desktop:gap-base-desktop;
+  }
+  
+
+
+  /* checkbx */
+  .main-checkbox{
+    @apply w-[24px] h-[24px] rounded-[6px] border-[0.75px] border-success cursor-pointer appearance-none bg-transparent relative grid place-items-center
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary
+    desktop:w-[30px] desktop:h-[30px];   
+  }
+  .main-checkbox:checked {
+    @apply bg-success bg-[url(/src/assets/check.svg)] bg-no-repeat bg-center bg-contain;
+  }
+
+  /* task card */
+  .card {
+    @apply bg-white dark:bg-dark-lightBackground shadow-item
+    rounded-[12px];
+  }
+  .task-card{
+    @apply card flex items-center gap-base w-full wrapper
+    transition-[width] duration-300 ease-in-out
+    desktop:gap-base-desktop;
+  }
+  .task-card-wrapper{
+    @apply flex flex-col gap-[14px] mb-mb-small;
+  }
+  .task-card-text-container{
+    @apply flex items-center gap-base flex-1
+    desktop:gap-base-desktop;
+  }
+  .task-card-text{
+    @apply flex flex-col items-start cursor-pointer gap-[4px];
+  }
+  .task-card-container {
+      @apply  w-full relative flex items-center justify-between;
+  }
+  .task-card-buttons {
+    /* -z-10 */
+    @apply flex flex-col justify-between h-full max-w-[10%] absolute top-0 right-0 opacity-0
+    transition-[opacity] duration-300 ease-in-out;
+  }
+  .group:hover .task-card-buttons,
+  .task-card-container.swiped .task-card-buttons,
+  .subtask-input-wrapper:hover .task-card-buttons,
+  .subtask-input-wrapper.swiped .task-card-buttons {
+    @apply opacity-100;
+  }
+  .group:hover .task-card,
+  .task-card-container.swiped .task-card {
+    @apply w-[88%] desktop:w-[95%];
+  }
+  .subtask-input-wrapper.swiped .subtask-input,
+  .subtask-input-wrapper:hover .subtask-input {
+      @apply flex-grow-0 w-[88%]
+      desktop:w-[92%];
+  }
+
+  .task-card-edit-button,
+  .task-card-delete-button {
+    @apply  w-[24px] ;
+  }
+  .task-card-data {
+    @apply flex items-center gap-2 transition-opacity duration-300 ease-in-out;
+  }
+  .task-card-container.swiped .task-card-data,
+  .task-card-container:hover .task-card-data {
+    @apply opacity-0;
+  }
+
+  /* form */
+  .form-container{
+    @apply max-w-[600px] m-auto;
+  }
+  .input-base{
+    @apply text-regular shadow-item w-full border outline-none transition-[border] duration-200 bg-light-background dark:bg-dark-lightBackground dark:border-dark-lightBackground
+    px-[12px] py-[16px] rounded-[12px]
+    desktop:text-regular-desktop;
+    &.error{
+      @apply border-error;
+    }
+    &.focus{
+      @apply border-primary;
+    }
+    &.label-active{
+      @apply pt-[26px] pb-[8px]
+    }
+  }
+  .label-base{
+    @apply text-regular inline-block absolute transition-all duration-200 cursor-text 
+    left-[12px] top-1/2 -translate-y-1/2
+    desktop:text-small-desktop;
+    &.active{
+      @apply top-2 -translate-y-0 text-small 
+    }
+
+  }
+  .close-button{
+    @apply absolute right-[12px] top-1/2 -translate-y-1/2 icon-size
+  } 
+  .error-text{
+    @apply text-small text-error mt-1 ml-[12px];
+  } 
+  .subtask-input-wrapper{
+    @apply relative w-[90%] desktop:w-[93%];
+  }
+  .subtask-input{
+    @apply flex w-full flex-col transition-[width] duration-300 ease-in-out; 
+  }
+  .subTask-container{
+    @apply mb-mb-small border-l-[4px] pl-[16px] border-primary
+  }
+  .subTask-wrapper{
+    @apply flex gap-big desktop:gap-big-desktop mb-mb-smaller2
+  }
+  .subTask-wrapper .main-checkbox,
+  .subTask-wrapper .task-card-buttons{
+    @apply translate-y-[50%] 
+  }
+  .subTask-wrapper .task-card-buttons{
+    @apply h-auto
+  }
+
+
+
+
+}
+@layer utilities{
+
+}
